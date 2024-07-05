@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1052045918566",
+    "project_id": "itis-shop",
+    "storage_bucket": "itis-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052045918566:android:bccf389f984c68542f48a7",
+        "android_client_info": {
+          "package_name": "com.example.itis_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW5Y65E5546XTyrIFNX3AcOr1EyC6rf4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

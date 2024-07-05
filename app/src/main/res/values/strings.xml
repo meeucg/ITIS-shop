@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ITIS-shop</string>
+    <string name="catalog_name">Catalog</string>
+    <string name="shopping_cart_name">Shopping cart</string>
+    <string name="favorite_name">Favorite</string>
+    <string name="profile_name">Profile</string>
+    <string name="product_card_name">Product card</string>
+</resources>
