@@ -20,3 +20,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding = null
     }
 }
+fun main(){
+    println("hello world")
+}
