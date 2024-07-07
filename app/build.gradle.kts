@@ -44,11 +44,10 @@ dependencies {
 
     implementation(libs.glide)
     ksp(libs.ksp)
-
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
+    implementation("com.android.support:design:28.0.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

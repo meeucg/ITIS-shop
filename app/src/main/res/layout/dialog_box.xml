@@ -1,0 +1,77 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="16dp"
+    android:paddingBottom="8dp"
+    android:layout_marginVertical="5dp"
+    android:id="@+id/dialogBox">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="@string/delete_item_from_favorite_products"
+            android:textSize="30sp"
+            tools:ignore="MissingConstraints" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelButton"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:text="@string/cancel"
+                android:layout_weight="1"
+                android:textColor="#C973B33C"
+                app:strokeWidth="2dp"
+                android:textSize="24sp"
+                android:layout_margin="8dp"
+                app:strokeColor="#C973B33C"
+                android:backgroundTint="@color/white"
+                android:padding="12dp"
+                >
+
+            </com.google.android.material.button.MaterialButton>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/yesButton"
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:text="@string/yes"
+                android:layout_weight="1"
+                android:textColor="#427F87"
+                app:strokeWidth="2dp"
+                android:textSize="24sp"
+                android:layout_margin="8dp"
+                app:strokeColor="#427F87"
+                android:backgroundTint="@color/white"
+                android:padding="12dp"/>
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</androidx.cardview.widget.CardView>

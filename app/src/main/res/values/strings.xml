@@ -5,4 +5,8 @@
     <string name="favorite_name">Favorite</string>
     <string name="profile_name">Profile</string>
     <string name="product_card_name">Product card</string>
+    <string name="favorite_products">Favorite products</string>
+    <string name="delete_item_from_favorite_products">Delete item from favorite products?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>

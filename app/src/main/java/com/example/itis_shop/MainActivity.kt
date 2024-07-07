@@ -1,5 +1,6 @@
 package com.example.itis_shop
 
+import FavoriteFiles.CustomDialogFragment
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.itis_shop.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,6 +32,7 @@ class MainActivity : AppCompatActivity() {
                 handleBottomNavigationViewVisibility(destination)
             }
         }
+
     }
 
     private fun handleBottomNavigationViewVisibility(destination: NavDestination){
@@ -50,4 +53,5 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         binding = null
     }
+
 }

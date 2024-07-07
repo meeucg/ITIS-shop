@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="16dp"
+    android:paddingBottom="8dp"
+    android:layout_marginVertical="5dp"
+    android:id="@+id/favItem">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="8dp"
+        android:orientation="vertical"
+        tools:ignore="ExtraText">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@color/black"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="100$"
+            tools:textColor="@color/black"
+            tools:textSize="16sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Найк монархи"
+            android:id="@+id/itemName"
+            android:textSize="16sp"
+            tools:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="7dp"
+        android:background="?android:selectableItemBackground"
+        android:importantForAccessibility="no"
+        android:id="@+id/deleteBut"
+        android:src="@drawable/baseline_delete_outline_24" />
+
+
+
+
+</androidx.cardview.widget.CardView>
