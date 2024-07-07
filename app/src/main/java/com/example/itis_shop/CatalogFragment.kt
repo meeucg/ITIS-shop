@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.itis_shop.databinding.FragmentCatalogBinding
 import com.example.itis_shop.recycler_catalog.CatalogAdapter
+import com.example.itis_shop.recycler_catalog.GridBottomOffsetDecorator
 import com.example.itis_shop.storage.Product
 import kotlinx.coroutines.awaitAll
 
@@ -39,8 +40,8 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
             )
 
             rvCatalog.adapter = adapter
-
             rvCatalog.layoutManager = StaggeredGridLayoutManager(2, 1)
+            rvCatalog.addItemDecoration(GridBottomOffsetDecorator(300))
         }
     }
 
