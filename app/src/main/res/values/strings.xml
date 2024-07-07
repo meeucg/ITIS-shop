@@ -5,4 +5,12 @@
     <string name="favorite_name">Favorite</string>
     <string name="profile_name">Profile</string>
     <string name="product_card_name">Product card</string>
+    <string name="your_cart_is_empty">Your Cart is Empty</string>
+    <string name="check_out">Check Out</string>
+    <string name="cart">Корзина</string>
+    <string name="buy">Купить</string>
+    <string name="sub_total">Промежуточный итог</string>
+    <string name="delivery">Доставка</string>
+    <string name="discount">Cкидка</string>
+    <string name="total">Итого</string>
 </resources>
