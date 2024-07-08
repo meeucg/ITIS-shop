@@ -11,64 +11,63 @@ import com.example.itis_shop.databinding.ViewholderCartBinding
 
 class CartAdapter(
     private val listItemSelected: ArrayList<Product>,
-    context: Context,
-//    var changeNumberItemsListener: ChangeNumberItemsListener? = null
+    private val context: Context,
+    private val changeNumberItemsListener: ChangeNumberItemsListener
 ) : RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: ViewholderCartBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(val binding: ViewholderCartBinding) : RecyclerView.ViewHolder(binding.root)
 
-    }
+    private val managementCart = Product(context.toString())
 
-    //карточки товаров    private val managementCart = ManagmentCart(context)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartAdapter.ViewHolder {
-        val binding =
-            ViewholderCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ViewholderCartBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CartAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = listItemSelected[position]
 
-        // Вывод информации о товаре
+        // Display product information
         holder.binding.titleTxt.text = item.name
-        holder.binding.feeEachItem.text = "${item.price}₽" // цена за единицу товара
-        holder.binding.totalEachItem.text =
-            "${Math.round((item.numberInCart * item.price).toDouble())}₽" //итоговая сумма
-        holder.binding.numberItemTxt.text = item.numberInCart.toString() //количество товара
+        holder.binding.feeEachItem.text = "${item.price}₽"
+        holder.binding.totalEachItem.text = "${(item.numberInCart * item.price).toInt()}₽"
+        holder.binding.numberItemTxt.text = item.numberInCart.toString()
 
         Glide.with(holder.itemView.context)
             .load(item.imageUrl[0])
-            .apply(RequestOptions().transform(CenterCrop()))
+            .apply(RequestOptions().centerCrop())
             .into(holder.binding.image)
 
-        //Функция для работы +
+        // Functionality for the + button
         holder.binding.plusCartBtn.setOnClickListener {
             managementCart.plusItem(
                 listItemSelected, position,
-//                object : ChangeNumberItemsListener {
-//                override fun onChanged() {
-//                    notifyDataSetChanged()
-//                    changeNumberItemsListener?.onChanged()
-//                }
-//
-//            }
+                object : ChangeNumberItemsListener {
+                    override fun onChanged() {
+                        notifyDataSetChanged()
+                        changeNumberItemsListener.onChanged()
+                    }
+                }
             )
         }
 
-        //Функция для работы -
+        // Functionality for the - button
         holder.binding.minusCartBtn.setOnClickListener {
             managementCart.minusItem(
-                listItemSelected,
-                position,
-//                object : ChangeNumberItemsListener {
-//                    override fun onChanged() {
-//                        notifyDataSetChanged()
-//                        changeNumberItemsListener?.onChanged()
-//                    }
-//                }
+                listItemSelected, position,
+                object : ChangeNumberItemsListener {
+                    override fun onChanged() {
+                        notifyDataSetChanged()
+                        changeNumberItemsListener.onChanged()
+                    }
+                }
             )
         }
     }
 
     override fun getItemCount(): Int = listItemSelected.size
+
+    interface ChangeNumberItemsListener {
+        fun onChanged()
+    }
 }
