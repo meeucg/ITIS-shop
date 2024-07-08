@@ -6,14 +6,111 @@
     android:layout_height="match_parent"
     tools:context=".ProfileFragment">
 
-    <TextView
-        android:id="@+id/tvTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/profile_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/top_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="288dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/avatar_profile"
+                    app:layout_constraintBottom_toBottomOf="@+id/background"
+                    app:layout_constraintEnd_toEndOf="@+id/background"
+                    app:layout_constraintStart_toStartOf="@+id/background"
+                    app:layout_constraintTop_toBottomOf="@+id/background"
+                    app:layout_constraintVertical_bias="0.432"
+                    tools:ignore="ContentDescription" />
+
+
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/graphik_medium"
+                    android:text="@string/email"
+                    android:textSize="23sp"
+                    app:layout_constraintEnd_toEndOf="@+id/profile"
+                    app:layout_constraintStart_toStartOf="@+id/profile"
+                    app:layout_constraintTop_toBottomOf="@+id/profile" />
+
+                <TextView
+                    android:id="@+id/balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/graphik_light"
+                    android:text="@string/balance"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_email"
+                    app:layout_constraintStart_toStartOf="@+id/tv_email"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/balance">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/addition"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button_background"
+                        android:drawableStart="@drawable/baseline_add_box_24"
+                        android:drawablePadding="20dp"
+                        android:fontFamily="@font/graphik_medium"
+                        android:paddingStart="20dp"
+                        android:text="@string/addition"
+                        tools:ignore="RtlSymmetry" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/button_exit"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/button_background"
+                        android:drawableStart="@drawable/baseline_exit_to_app_24"
+                        android:drawablePadding="20dp"
+                        android:fontFamily="@font/graphik_medium"
+                        android:paddingStart="20dp"
+                        android:text="@string/exit_account"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
