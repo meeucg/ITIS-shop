@@ -4,19 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintSet.Layout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.itis_shop.databinding.ActivityMainBinding
-import com.example.itis_shop.databinding.FragmentCatalogBinding
 import com.example.itis_shop.databinding.FragmentShoppingCartBinding
+import kotlin.Int.Companion as Int1
 
 class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
 
     private var binding: FragmentShoppingCartBinding? = null
 
     private lateinit var cartAdapter: CartAdapter
-    private lateinit var cartItems: List<Product>
+    private lateinit var cartItems: ArrayList<Product>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
