@@ -28,12 +28,12 @@ class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentShoppingCartBinding.bind(view)
 
-        // RecyclerView
-        cartAdapter = CartAdapter() // передать список товаров в корзине
-        binding!!.viewCart.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = cartAdapter
-        }
+//        // RecyclerView
+//        cartAdapter = CartAdapter(listItemSelected) // передать список товаров в корзине
+//        binding!!.viewCart.apply {
+//            layoutManager = LinearLayoutManager(context)
+//            adapter = cartAdapter
+//        }
 
         binding!!.button.setOnClickListener {
         }
@@ -48,10 +48,10 @@ class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
 
     private fun calculateCart() {
         val percentDiscount = 0.1
-        val delivery = 10.0
-        val discount = Math.round((Product.price * percentDiscount) * 100) / 100.0
-        val total = Math.round((Product.price - discount + delivery) * 100) / 100.0
-        val itemTotal = Product.price
+        val delivery = 10
+        val discount = Math.round((delivery * percentDiscount) * 100) / 100
+        val total = Math.round(((delivery - discount + delivery) * 100).toDouble()) / 100
+        val itemTotal = delivery
 
         with(binding!!) {
             totalFeeTxt.text = "$itemTotal"
@@ -63,6 +63,10 @@ class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
             emptyTxt.visibility = if (cartItems.isEmpty()) View.VISIBLE else View.GONE
             scrollView2.visibility = if (cartItems.isEmpty()) View.GONE else View.VISIBLE
         }
+    }
+
+    fun onChanged() {
+        calculateCart()
     }
 
     override fun onDestroyView() {
