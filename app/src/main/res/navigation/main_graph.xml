@@ -8,7 +8,7 @@
         android:name="com.example.itis_shop.CatalogFragment"
         android:label="CatalogFragment" >
         <action
-            android:id="@+id/action_catalogFragment2_to_productCardFragment"
+            android:id="@+id/action_catalogFragment_to_productCardFragment"
             app:destination="@id/productCardFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -20,21 +20,21 @@
         android:name="com.example.itis_shop.ProductCardFragment"
         android:label="ProductCardFragment" >
         <action
-            android:id="@+id/action_productCardFragment_to_catalogFragment2"
+            android:id="@+id/action_productCardFragment_to_catalogFragment"
             app:destination="@id/catalogFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_productCardFragment_to_shoppingCartFragment2"
+            android:id="@+id/action_productCardFragment_to_shoppingCartFragment"
             app:destination="@id/shoppingCartFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_productCardFragment_to_favoriteFragment2"
+            android:id="@+id/action_productCardFragment_to_favoriteFragment"
             app:destination="@id/favoriteFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -46,7 +46,7 @@
         android:name="com.example.itis_shop.FavoriteFragment"
         android:label="FavoriteFragment" >
         <action
-            android:id="@+id/action_favoriteFragment2_to_productCardFragment"
+            android:id="@+id/action_favoriteFragment_to_productCardFragment"
             app:destination="@id/productCardFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
@@ -70,7 +70,7 @@
         app:popEnterAnim="@anim/nav_default_pop_enter_anim"
         app:popExitAnim="@anim/nav_default_pop_exit_anim" >
         <action
-            android:id="@+id/action_shoppingCartFragment2_to_productCardFragment"
+            android:id="@+id/action_shoppingCartFragment_to_productCardFragment"
             app:destination="@id/productCardFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"

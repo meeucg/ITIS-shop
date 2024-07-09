@@ -10,7 +10,7 @@ import com.example.itis_shop.storage.Product
 class CatalogAdapter(
     private var list: List<Product>,
     private val glide: RequestManager,
-    private val onClick: (Int) -> Unit,
+    private val onClick: (String) -> Unit,
 ) : RecyclerView.Adapter<CatalogHolder>() {
 
 

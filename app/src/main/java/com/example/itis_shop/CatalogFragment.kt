@@ -4,15 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.itis_shop.databinding.FragmentCatalogBinding
 import com.example.itis_shop.recycler_catalog.CatalogAdapter
-import com.example.itis_shop.recycler_catalog.GridBottomOffsetDecorator
-import com.example.itis_shop.storage.Product
-import kotlinx.coroutines.awaitAll
+import com.example.itis_shop.tools.GridBottomOffsetDecorator
 
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
@@ -33,9 +29,8 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
                 list = storage.catalog,
                 glide = Glide.with(this@CatalogFragment),
                 onClick = {
-//                    findNavController().navigate(resId = R.id.action_birdFragment_to_birdProfileFragment,
-//                        BirdProfileFragment.bundle(it))
-                    //Snackbar.make(root, BirdRepository.birds[it].name, Snackbar.LENGTH_LONG).show()
+                    findNavController().navigate(resId = R.id.action_catalogFragment_to_productCardFragment,
+                        ProductCardFragment.bundle(it))
                 }
             )
 

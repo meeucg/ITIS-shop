@@ -1,4 +1,4 @@
-package com.example.itis_shop.recycler_catalog
+package com.example.itis_shop.tools
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

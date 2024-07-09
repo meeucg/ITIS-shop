@@ -10,8 +10,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.itis_shop.databinding.ActivityMainBinding
 import com.example.itis_shop.storage.Storage
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.itis_shop.resources.SneakersRepository
 
 val storage = Storage()
+val currentUser = ""
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //storage.db.collection("user_data").document(user_id).set(UserData())
+
+        for(product in SneakersRepository.products){
+            storage.addToCatalog(product)
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater).also {
             setContentView(it.root)
@@ -40,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
         val showBottomNav = when (destination.id) {
+            R.id.productCardFragment -> false
             else -> true
         }
 
