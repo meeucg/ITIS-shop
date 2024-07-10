@@ -3,6 +3,7 @@ package recycler_favorite
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.RequestManager
 import com.example.itis_shop.R
+import com.example.itis_shop.databinding.FragmentShoppingCartBinding
 import com.example.itis_shop.databinding.ItemFavoriteBinding
 import com.example.itis_shop.storage
 import com.example.itis_shop.storage.Product

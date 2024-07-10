@@ -14,6 +14,7 @@ class Storage {
     var catalog: MutableList<Product> = mutableListOf()
     var favorites: MutableList<Product> = mutableListOf()
     var shoppingCart: MutableMap<Product, Int> = mutableMapOf()
+    var shoppingCartTotalPrice: Int = 0
     var userData: UserData = UserData()
 
     init{
@@ -36,6 +37,7 @@ class Storage {
                                 .let { product ->
                                     if(product != null){
                                         shoppingCart.put(product, pair.value)
+                                        shoppingCartTotalPrice += product.price * pair.value
                                     }
                                 }
                         }
@@ -255,9 +257,11 @@ class Storage {
                     .addOnCompleteListener{
                         if(it.isSuccessful){
                             userData.shoppingCart.put(productId, count)
-                            shoppingCart.put(catalog.find {
+                            val product = catalog.find {
                                 it.id == productId
-                            } ?: return@addOnCompleteListener, count)
+                            } ?: return@addOnCompleteListener
+                            shoppingCartTotalPrice += product.price * count
+                            shoppingCart.put(product, count)
                             onEnd()
                         } else {
                             onFail()
@@ -281,9 +285,11 @@ class Storage {
                     .addOnCompleteListener{
                         if(it.isSuccessful){
                             userData.shoppingCart.remove(productId)
-                            shoppingCart.remove(shoppingCart.keys.find {
+                            val product = shoppingCart.keys.find {
                                 it.id == productId
-                            })
+                            }
+                            shoppingCartTotalPrice -= product!!.price * shoppingCart[product]!!
+                            shoppingCart.remove(product)
                             onEnd()
                         } else {
                             onFail()
@@ -310,11 +316,11 @@ class Storage {
                         if(it.isSuccessful){
                             userData.shoppingCart[productId] =
                                 userData.shoppingCart[productId]!! + count
-                            shoppingCart[catalog.find {
+                            val product = catalog.find {
                                 it.id == productId
-                            }!!] = shoppingCart[catalog.find {
-                                it.id == productId
-                            }]!! + count
+                            }!!
+                            shoppingCart[product] = shoppingCart[product]!! + count
+                            shoppingCartTotalPrice += product.price * count
                             onEnd()
                         } else {
                             onFail()

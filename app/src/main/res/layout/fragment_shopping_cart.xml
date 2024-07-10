@@ -6,16 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".ShoppingCartFragment">
 
+    <View
+        android:id="@+id/view"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:elevation="0dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:outlineSpotShadowColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvShoppingCart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="3"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        tools:itemCount="4"
         tools:listitem="@layout/item_shopping_cart_product">
     </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/buyAllBtn"
+        style="@style/ButtonDefaultEnabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:elevation="20dp"
+        android:text="Buy all"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        style="@style/TextViewPrimary"
+        android:id="@+id/tvTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:elevation="20dp"
+        android:text="@string/total"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

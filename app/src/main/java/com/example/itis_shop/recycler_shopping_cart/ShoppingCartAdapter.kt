@@ -4,10 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
+import com.example.itis_shop.databinding.FragmentShoppingCartBinding
 import com.example.itis_shop.databinding.ItemShoppingCartProductBinding
 import com.example.itis_shop.storage.Product
 
 class ShoppingCartAdapter(
+    private val parentBinding: FragmentShoppingCartBinding,
     private var list: List<Product>,
     private val glide: RequestManager,
     private val onClick: (String) -> Unit,
@@ -18,6 +20,7 @@ class ShoppingCartAdapter(
         parent: ViewGroup,
         viewType: Int
     ): ShoppingCartHolder = ShoppingCartHolder(
+        parentBinding = parentBinding,
         listOfProducts = list,
         binding = ItemShoppingCartProductBinding.inflate(
             LayoutInflater.from(parent.context),

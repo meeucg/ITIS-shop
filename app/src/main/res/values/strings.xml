@@ -24,4 +24,5 @@
     <string name="repeat_password">Repeat password</string>
     <string name="input_sum">Enter a sum in $</string>
     <string name="input_button_dialog">Apply</string>
+    <string name="total">Total:</string>
 </resources>

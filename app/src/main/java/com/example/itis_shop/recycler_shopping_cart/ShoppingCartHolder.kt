@@ -9,12 +9,14 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.itis_shop.R
+import com.example.itis_shop.databinding.FragmentShoppingCartBinding
 import com.example.itis_shop.databinding.ItemShoppingCartProductBinding
 import com.example.itis_shop.storage
 import com.example.itis_shop.storage.Product
 import com.example.itis_shop.storage.user_id
 
 class ShoppingCartHolder(
+    private val parentBinding: FragmentShoppingCartBinding,
     private val listOfProducts: List<Product>,
     private val binding: ItemShoppingCartProductBinding,
     private val glide: RequestManager,
@@ -38,6 +40,7 @@ class ShoppingCartHolder(
                 .favorites.contains(product.id)
 
             tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
+            parentBinding.tvTotalPrice.text = "Total: ${storage.shoppingCartTotalPrice}$"
 
             when(iconState)
             {
@@ -85,7 +88,11 @@ class ShoppingCartHolder(
             }
 
             btnRemove.setOnClickListener{
-                storage.removeFromShoppingCart(user_id, product.id)
+                storage.removeFromShoppingCart(user_id,
+                    product.id,
+                    onEnd = {
+                        parentBinding.tvTotalPrice.text = "Total: ${storage.shoppingCartTotalPrice}$"
+                    })
                 btnRemove.isEnabled = false
                 btnMinus.isEnabled = false
                 btnPlus.isEnabled = false
@@ -97,14 +104,18 @@ class ShoppingCartHolder(
                 storage.incrementCountByCountShoppingCart(user_id, product.id, 1,
                     onEnd = {
                         tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
+                        parentBinding.tvTotalPrice.text = "Total: ${storage.shoppingCartTotalPrice}$"
                     })
             }
 
             btnMinus.setOnClickListener{
-                storage.incrementCountByCountShoppingCart(user_id, product.id, -1,
-                    onEnd = {
-                        tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
-                    })
+                if(storage.shoppingCart[product]!! > 1){
+                    storage.incrementCountByCountShoppingCart(user_id, product.id, -1,
+                        onEnd = {
+                            tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
+                            parentBinding.tvTotalPrice.text = "Total: ${storage.shoppingCartTotalPrice}$"
+                        })
+                }
             }
         }
     }

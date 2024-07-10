@@ -15,10 +15,10 @@ class ShoppingCartFragment : Fragment(R.layout.fragment_shopping_cart) {
     private var binding: FragmentShoppingCartBinding? = null
     private var adapter: ShoppingCartAdapter? = null
 
-
     private fun initAdapter() {
         binding?.run {
             adapter = ShoppingCartAdapter(
+                parentBinding = binding!!,
                 list = storage.shoppingCart.keys.toList(),
                 glide = Glide.with(this@ShoppingCartFragment),
                 onClick = {
