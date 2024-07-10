@@ -3,6 +3,7 @@ package com.example.itis_shop.storage
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 import kotlinx.coroutines.runBlocking
 
 val user_id = "OoGXzfzrdUc3Fe5WAqT7"
@@ -12,7 +13,7 @@ class Storage {
 
     var catalog: MutableList<Product> = mutableListOf()
     var favorites: MutableList<Product> = mutableListOf()
-    var shoppingCart: Map<Product, Int> = mapOf()
+    var shoppingCart: MutableMap<Product, Int> = mutableMapOf()
     var userData: UserData = UserData()
 
     init{
@@ -27,6 +28,14 @@ class Storage {
                                 .let { product ->
                                     if(product != null){
                                         favorites.add(product)
+                                    }
+                                }
+                        }
+                        for(pair in userData.shoppingCart){
+                            catalog.find { it.id == pair.key }
+                                .let { product ->
+                                    if(product != null){
+                                        shoppingCart.put(product, pair.value)
                                     }
                                 }
                         }
@@ -245,6 +254,10 @@ class Storage {
                     .update(mapOf("shoppingCart.${productId}" to count))
                     .addOnCompleteListener{
                         if(it.isSuccessful){
+                            userData.shoppingCart.put(productId, count)
+                            shoppingCart.put(catalog.find {
+                                it.id == productId
+                            } ?: return@addOnCompleteListener, count)
                             onEnd()
                         } else {
                             onFail()
@@ -267,6 +280,10 @@ class Storage {
                     .update("shoppingCart.${productId}", FieldValue.delete())
                     .addOnCompleteListener{
                         if(it.isSuccessful){
+                            userData.shoppingCart.remove(productId)
+                            shoppingCart.remove(shoppingCart.keys.find {
+                                it.id == productId
+                            })
                             onEnd()
                         } else {
                             onFail()
@@ -291,6 +308,13 @@ class Storage {
                         FieldValue.increment(count.toLong()))
                     .addOnCompleteListener{
                         if(it.isSuccessful){
+                            userData.shoppingCart[productId] =
+                                userData.shoppingCart[productId]!! + count
+                            shoppingCart[catalog.find {
+                                it.id == productId
+                            }!!] = shoppingCart[catalog.find {
+                                it.id == productId
+                            }]!! + count
                             onEnd()
                         } else {
                             onFail()

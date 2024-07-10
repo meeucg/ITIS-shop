@@ -10,4 +10,18 @@
     <string name="delete_item_from_favorite_products">Delete item from favorite products?</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+    <string name="profile_text">Username</string>
+    <string name="exit_account">Exit account</string>
+    <string name="balance">Balance: 0$</string>
+    <string name="addition">Replenish the balance</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password_login">Password</string>
+    <string name="new_to_here">New to here?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="username">Username</string>
+    <string name="password_register">Password</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="input_sum">Enter a sum in $</string>
+    <string name="input_button_dialog">Apply</string>
 </resources>

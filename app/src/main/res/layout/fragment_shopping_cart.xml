@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ShoppingCartFragment">
 
-    <TextView
-        android:id="@+id/tvTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/shopping_cart_name"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvShoppingCart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_shopping_cart_product">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

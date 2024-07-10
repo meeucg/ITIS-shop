@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.itis_shop.databinding.FragmentCatalogBinding
 import com.example.itis_shop.recycler_catalog.CatalogAdapter
-import com.example.itis_shop.tools.GridBottomOffsetDecorator
+import com.example.itis_shop.tools.BottomOffsetDecorator
 
 class CatalogFragment : Fragment(R.layout.fragment_catalog) {
 
@@ -30,13 +30,13 @@ class CatalogFragment : Fragment(R.layout.fragment_catalog) {
                 glide = Glide.with(this@CatalogFragment),
                 onClick = {
                     findNavController().navigate(resId = R.id.action_catalogFragment_to_productCardFragment,
-                        ProductCardFragment.bundle(it))
+                        ProductCardFragment.bundle(it, R.id.catalogFragment))
                 }
             )
 
             rvCatalog.adapter = adapter
             rvCatalog.layoutManager = StaggeredGridLayoutManager(2, 1)
-            rvCatalog.addItemDecoration(GridBottomOffsetDecorator(300))
+            rvCatalog.addItemDecoration(BottomOffsetDecorator(300))
         }
     }
 

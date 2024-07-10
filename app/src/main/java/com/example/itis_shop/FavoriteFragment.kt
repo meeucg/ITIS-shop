@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.bumptech.glide.Glide
 import com.example.itis_shop.databinding.FragmentFavoriteBinding
-import com.example.itis_shop.tools.GridBottomOffsetDecorator
+import com.example.itis_shop.tools.BottomOffsetDecorator
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
@@ -30,12 +30,12 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
             glide = Glide.with(this),
             onClick = {
                 findNavController().navigate(resId = R.id.action_favoriteFragment_to_productCardFragment,
-                    ProductCardFragment.bundle(it))
+                    ProductCardFragment.bundle(it, R.id.favoriteFragment))
             })
         binding?.run{
             rvFavorite.adapter=adapter
             rvFavorite.layoutManager=StaggeredGridLayoutManager(2, 1)
-            rvFavorite.addItemDecoration(GridBottomOffsetDecorator(300))
+            rvFavorite.addItemDecoration(BottomOffsetDecorator(300))
         }
     }
 }

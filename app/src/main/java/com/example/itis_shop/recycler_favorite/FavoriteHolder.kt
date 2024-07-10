@@ -1,7 +1,6 @@
 package recycler_favorite
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import com.example.itis_shop.R
 import com.example.itis_shop.databinding.ItemFavoriteBinding
@@ -26,12 +25,12 @@ class FavoriteHolder(
                 when(iconState)
                 {
                     true -> {
-                        btnLike.setBackgroundResource(R.drawable.heart_icon_outline)
+                        btnLike.setBackgroundResource(R.drawable.heart_icon_outline_black)
                         storage.removeFromFavorite(productId = favProduct.id, userId = user_id)
                         iconState = !iconState
                     }
                     else -> {
-                        btnLike.setBackgroundResource(R.drawable.heart_icon_filled)
+                        btnLike.setBackgroundResource(R.drawable.heart_icon_filled_black)
                         storage.addToFavorite(productId = favProduct.id, userId = user_id)
                         iconState = !iconState
                     }

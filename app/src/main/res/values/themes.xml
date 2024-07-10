@@ -5,32 +5,46 @@
 
 
     <style name="TextViewTitle">
+        <item name="fontFamily">@font/graphik_medium</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">32sp</item>
-        <item name="textFillColor">@color/primary_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TextViewPrimary">
+        <item name="fontFamily">@font/graphik_medium</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
-        <item name="textFillColor">@color/primary_text</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
     <style name="TextViewSecondary">
+        <item name="fontFamily">@font/graphik_light</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-        <item name="textFillColor">@color/secondary_text</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="ButtonDefaultEnabled">
+        <item name="android:backgroundTint">@color/button_on_enabled_light</item>
+        <item name="fontFamily">@font/graphik_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_text_inverted</item>
+    </style>
+
+    <style name="ButtonDefaultDisabled">
+        <item name="android:backgroundTint">@color/button_on_disabled_light</item>
+        <item name="fontFamily">@font/graphik_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_text_inverted</item>
+    </style>
+
     <style name="CardViewCustom">
         <item name="android:layout_margin">4dp</item>
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">0dp</item>
         <item name="strokeColor">@color/white</item>
         <item name="cardBackgroundColor">@color/white</item>
         <item name="cornerRadius">16dp</item>

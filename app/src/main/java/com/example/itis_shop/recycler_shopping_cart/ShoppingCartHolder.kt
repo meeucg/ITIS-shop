@@ -1,19 +1,22 @@
-package com.example.itis_shop.recycler_catalog
+package com.example.itis_shop.recycler_shopping_cart
 
 import android.content.Context
+import android.view.View
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.transition.Visibility
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.itis_shop.R
-import com.example.itis_shop.databinding.ItemCatalogProductBinding
+import com.example.itis_shop.databinding.ItemShoppingCartProductBinding
 import com.example.itis_shop.storage
 import com.example.itis_shop.storage.Product
 import com.example.itis_shop.storage.user_id
 
-class CatalogHolder(
+class ShoppingCartHolder(
     private val listOfProducts: List<Product>,
-    private val binding: ItemCatalogProductBinding,
+    private val binding: ItemShoppingCartProductBinding,
     private val glide: RequestManager,
     private val onClick: (String) -> Unit,
 ) : ViewHolder(binding.root) {
@@ -33,6 +36,8 @@ class CatalogHolder(
             val product = listOfProducts[productId]
             iconState = storage.userData
                 .favorites.contains(product.id)
+
+            tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
 
             when(iconState)
             {
@@ -77,6 +82,29 @@ class CatalogHolder(
 
                 }
 
+            }
+
+            btnRemove.setOnClickListener{
+                storage.removeFromShoppingCart(user_id, product.id)
+                btnRemove.isEnabled = false
+                btnMinus.isEnabled = false
+                btnPlus.isEnabled = false
+                btnLike.isEnabled = false
+                block.visibility = View.VISIBLE
+            }
+
+            btnPlus.setOnClickListener{
+                storage.incrementCountByCountShoppingCart(user_id, product.id, 1,
+                    onEnd = {
+                        tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
+                    })
+            }
+
+            btnMinus.setOnClickListener{
+                storage.incrementCountByCountShoppingCart(user_id, product.id, -1,
+                    onEnd = {
+                        tvProductCount.text = storage.userData.shoppingCart[product.id].toString()
+                    })
             }
         }
     }
