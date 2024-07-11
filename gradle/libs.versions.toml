@@ -17,6 +17,7 @@ kspVersion = "1.9.0-1.0.13"
 
 [libraries]
 
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore = { module = "com.google.firebase:firebase-firestore-ktx"}
 

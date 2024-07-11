@@ -19,22 +19,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/background"
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/top_background"
+                    app:layout_constraintGuide_percent="0.5"/>
+
+                <View
+                    android:id="@+id/background"
+                    android:layout_width="wrap_content"
+                    android:layout_height="175dp"
+                    android:background="@drawable/top_to_bottom_gradient"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/guideline"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
                     android:id="@+id/profile"
                     android:layout_width="288dp"
                     android:layout_height="180dp"
-                    android:src="@drawable/avatar_profile"
+                    android:src="@drawable/cropped_image"
                     app:layout_constraintBottom_toBottomOf="@+id/background"
                     app:layout_constraintEnd_toEndOf="@+id/background"
                     app:layout_constraintStart_toStartOf="@+id/background"
@@ -44,23 +50,21 @@
 
 
                 <TextView
+                    style="@style/TextViewTitle"
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/graphik_medium"
                     android:text="@string/email"
-                    android:textSize="23sp"
                     app:layout_constraintEnd_toEndOf="@+id/profile"
                     app:layout_constraintStart_toStartOf="@+id/profile"
                     app:layout_constraintTop_toBottomOf="@+id/profile" />
 
                 <TextView
+                    style="@style/TextViewSecondary"
                     android:id="@+id/balance"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/graphik_light"
                     android:text="@string/balance"
-                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/tv_email"
                     app:layout_constraintStart_toStartOf="@+id/tv_email"
                     app:layout_constraintTop_toBottomOf="@+id/tv_email" />

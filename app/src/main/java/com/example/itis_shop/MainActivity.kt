@@ -41,7 +41,9 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
 
         val showBottomNav = when (destination.id) {
-            R.id.productCardFragment -> false
+            R.id.productCardFragment,
+            R.id.loginFragment,
+            R.id.registerFragment -> false
             else -> true
         }
 

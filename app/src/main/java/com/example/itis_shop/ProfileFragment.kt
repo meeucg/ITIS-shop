@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import com.example.itis_shop.databinding.DialogInputBinding
 import com.example.itis_shop.databinding.FragmentProfileBinding
+import com.example.itis_shop.storage.user_id
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
@@ -25,7 +27,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             showInputDialog()
         }
         binding!!.buttonExit.setOnClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+            findNavController()
+                .navigate(R.id.action_profileFragment_to_loginFragment)
         }
     }
 
@@ -41,7 +44,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             if (input.isNotEmpty()) {
                 try {
                     val amount = input.toInt()
-                    updateBalance(amount)
+                    storage.updateBalance(user_id, storage.userData.balance + amount,
+                        onEnd = {
+                            updateBalanceDisplay()
+                        })
                     dialog.dismiss()
                 } catch (e: NumberFormatException) {
                     Toast.makeText(context, "Неверный формат числа", Toast.LENGTH_SHORT).show()
@@ -54,14 +60,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         dialog.show()
     }
 
-    private fun updateBalance(amount: Int) {
-        balance += amount
-        updateBalanceDisplay()
-    }
-
     @SuppressLint("DefaultLocale")
     private fun updateBalanceDisplay() {
-        binding!!.balance.text = String.format("Баланс: %d", balance)
+        binding!!.balance.text = String.format("Balance: %d", storage.userData.balance)
     }
 
     override fun onDestroyView() {
